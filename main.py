@@ -212,3 +212,21 @@ Experience with Agile methodologies
     session_summary = get_ai_summary(job_description=job_description)
 
     print(f"\nSummary:\n{session_summary}")
+
+def main():
+    print("\nGenerating summary, please wait...")
+    job_description = escape_for_ollama(r"""
+[Your job description here]]
+""")
+    tailored_text = get_ai_summary(job_description=job_description)
+    print(f"\nTailored LaTeX Code:\n{tailored_text}")
+
+    #Attempting to compile LaTex code to PDF
+    try:
+        pdf_path = compile_latex_to_pdf(tailored_text)
+        print(f"PDF generated at: {pdf_path}")
+    except Exception as e:
+        print(f"Error generating PDF: {e}")
+
+if __name__ == "__main__":
+    main()
