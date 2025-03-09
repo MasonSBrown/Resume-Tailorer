@@ -1,0 +1,27 @@
+[project]
+name = "resume-generator"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "requests",
+  "langchain-core",
+  "langchain-ollama",
+  "langchain-openai",
+  "onepassword",
+  "panther"
+]
+
+[tool.pylint]
+init-hook = "import sys; sys.path.append('./.venv/lib/python3.12/site-packages')"
+disable = ["missing-module-docstring", "missing-docstring", "invalid-name", "not-callable"]
+load-plugins = ["pylint.extensions.mccabe"]
+max-line-length = 120
+
+[tool.black]
+line-length = 120
+
+[tool.setuptools.packages.find]
+where = ["../../python_modules"]
+include = ["panther*"]
